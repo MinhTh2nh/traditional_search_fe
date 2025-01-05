@@ -1,0 +1,27 @@
+.slider{
+    position: relative;
+    
+  }
+  
+  .newin{
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .banners{
+    position:relative;
+    
+  }
+  
+  .features{
+    position: relative;
+    
+  }
+
+
+  .footer{
+    background-color: #f3f3f6;
+  }
+  
+  

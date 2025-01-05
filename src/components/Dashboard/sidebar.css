@@ -1,0 +1,93 @@
+/* Base styling for the sidebar */
+.sidebar {
+    background-color: #363535; /* Dark blue background */
+    color: white;
+    width: 250px;
+    height: 100vh;
+    padding: 140px 20px 20px; /* Added 40px padding-top */
+    box-sizing: border-box;
+    position: fixed;
+    overflow-y: auto;
+}
+
+/* Styling for the header in the sidebar */
+.sidebar h2 {
+    color: #ECF0F1; /* Light grey color */
+    margin-bottom: 30px;
+    font-size: 24px;
+    text-align: center;
+}
+
+/* Unordered list styling */
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* List item styling */
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+/* Link styling */
+.sidebar a, .sidebar button {
+    color: #ECF0F1;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font: 18px Jost;
+}
+
+.sidebar a:hover, .sidebar button:hover {
+    background-color: #34495E; /* Slightly lighter blue */
+}
+
+/* Dropdown content styling */
+.dropdown ul {
+    display: none;
+    padding-left: 20px;
+}
+
+.dropdown ul li {
+    padding-left: 10px;
+}
+
+/* Show dropdown content when visible */
+.dropdown ul {
+    display: block;
+}
+
+.sidebar button {
+    font-weight: normal;
+}
+.dropdown-icon {
+    margin-left: 10px; /* Adjust as needed */
+}
+
+/* Adjust button styling to accommodate icon */
+.dropdown button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Other existing styles... */
+}
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .sidebar h2 {
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,146 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.banner-container--type-4 {
+    max-width: 1640px;
+}
+.shoppable-banners .row {
+    margin: 0 -10px;
+}
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#banner-row
+{
+    width: 100%;
+}
+
+.shoppable-banners .row>div {
+    padding: 0 10px;
+}
+
+.col-lg-6 {
+    flex: 0 0 auto;
+    width: 50%;
+}
+.shoppable-banners .featured-product {
+    margin-top: 145px;
+    height: 600px;
+}
+
+.featured-product {
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+}
+.shoppable-banners .featured-product__image {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #222;
+}
+.shoppable-banners .featured-product__image img {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}   
+.featured-product__image img {
+    transition: .75s all ease-in-out;
+}
+
+.featured-product__image {
+    position: absolute;
+}
+.featured-product__content {
+    top: 60px;
+    left: 60px;
+    bottom: 60px;
+    right: 60px;
+}
+
+.featured-product__content {
+    position: absolute;
+    z-index: 2;
+    max-width: 235px;
+    padding-bottom: 90px;
+}
+
+.shoppable-banners .featured-product__product-name {
+    color: #fff;
+    font-weight: 400;
+    text-transform: none;
+    line-height: 1;
+}
+.featured-product__product-name {
+    padding: 0 0 40px;
+    margin: 0;
+}
+.font-family-jost {
+    font-family: Jost;
+    letter-spacing: 0px;
+}
+
+h3 {
+    font-size: 60px;
+}
+.shoppable-banners .featured-product__product-name span {
+    display: inline-block;
+    background: #fff;
+    color: #000;
+    font-weight: 700;
+    padding: 0 9px;
+    margin-bottom: 13px;
+    margin-top: 15px;
+}
+.shoppable-banners .featured-product__product-description {
+    color: #fff;
+}
+.shoppable-banners .featured-product__button {
+    bottom: -10px;
+}
+.featured-product__button {
+    position: absolute;
+}
+.shoppable-banners .featured-product__button a {
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    display: inline-block;
+    position: relative;
+    padding: 5px 0;
+}
+
+.shoppable-banners .featured-product__product-description{
+        font: 18px Jost;
+}
+
+.shoppable-banners .featured-product__category {
+    color: #fff;
+    font-size: 14px;
+}
+
+.featured-product__category {
+    letter-spacing: .5px;
+    color: #928656;
+    text-transform: uppercase;
+    padding: 0 0 10px;
+    margin: 0;
+}
+
+.featured-product:hover .featured-product__image img {
+    transform: scale(1.2);
+}

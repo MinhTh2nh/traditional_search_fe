@@ -1,0 +1,60 @@
+/* profile.css */
+
+.container-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.sidebar {
+  width: 250px;
+  background-color: #363535;
+  color: white;
+  padding: 140px 20px;
+  box-sizing: border-box;
+  position: fixed;
+  overflow-y: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.user-profile {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.user-list {
+  list-style: none;
+  padding: 0;
+}
+
+.user-list li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.action-buttons {
+  display: flex;
+}
+
+.action-button {
+  background: none;
+  border: none;
+  margin-right: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #333; /* Change the color as desired */
+}
+
+.action-button:hover {
+  color: red; /* Change the hover color as desired */
+}

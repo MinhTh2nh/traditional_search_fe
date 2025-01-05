@@ -1,0 +1,24 @@
+
+/* Header container */
+.header {
+  background-color: #363535;
+  color: #fff;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0; /* Ensure no top margin */
+}
+
+/* Logo style */
+.logo {
+  width: 80px;
+  height: auto;
+  margin-right: 10px;
+}
+
+/* Store name style */
+.store-name {
+  font-size: 24px;
+  display: inline-block;
+}

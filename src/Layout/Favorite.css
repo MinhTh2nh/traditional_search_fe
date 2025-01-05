@@ -1,0 +1,17 @@
+.container--type-4 {
+    max-width: 1640px;
+}
+
+.d-flex {
+    display: flex !important;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+.shoppable-our-products .our-products__title {
+    font-weight: 400;
+}
+.minimal-our-products .our-products__title-and-action .product-tabs__action {
+    padding-top: 10px;
+    padding-left: 20px;
+}

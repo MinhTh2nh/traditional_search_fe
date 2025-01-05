@@ -1,0 +1,252 @@
+.container--type-4 {
+    max-width: 1640px;
+    display: block;
+}
+.about-intro {
+    background: rgba(0,0,0,0) !important;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.about-page__title {
+    padding: 60px 0 25px;
+    font-size: 26px;
+    color: #000000;
+}
+.row {
+    margin: 0 -15px;
+}
+.row>div {
+    padding: 0 15px;
+}
+.col-lg-4 {
+    flex: 0 0 auto;
+    width: 33.3333333333%;
+}
+.about-feature__icon {
+    width: 40px;
+    line-height: 1;
+    min-width: 40px;
+    font-size: 40px;
+    color: #000;
+}
+.about-page__description {
+    padding: 0 0 50px;
+    color: #666666;
+}
+.about-page__image img {
+    display: block;
+    width: 100%;
+}
+.about-page__description {
+    padding: 0 0 80px;
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+    font: 14px Jost;
+}
+.about-page__title {
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+    font: 26px Marcellus;
+}
+
+
+
+
+.about-page__features {
+    display: flex;
+    justify-content: space-between; /* or any other preferred space distribution */
+  }
+  
+  .about-page__features .col-lg-4 {
+    flex: 0 0 30%; /* Adjust the width as needed */
+    margin-right:40px;
+  }
+  
+  .about-feature {
+    display: flex;
+    align-items: center; /* Align items vertically in .about-feature */
+  }
+  
+  .about-feature__icon {
+    width: 26px;
+    min-width: 26px;
+    font-size: 26px;
+    margin-right: 100px; /* Add margin for space between icon and text */
+  }
+.lnil {
+    display: inline-block;
+    font: 1em/1 LineIconsPro Light;
+    
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.lnil-tshirt:before {
+    content: "\eb0c";
+}
+.about-feature__text {
+    margin-left: 25px;
+}
+.about-feature__title {
+    font-size: 14px;
+    padding-bottom: 15px;
+}
+.about-feature__description {
+    font-size: 12px;
+}
+.about-page__features .row>div {
+    width: 75%;
+}
+
+.about-feature {
+    display: flex;
+}
+
+
+.about-company {
+    background: #ececec !important;
+}
+.about-company .row {
+    margin: 0 -45px;
+}
+.about-company .row>div {
+    padding: 0 45px;
+}
+.about-company__image {
+    margin: 0 0 70px;
+}
+.about-company__image img {
+    display: block;
+    width: 100%;
+}
+.about-company__title {
+    color: #000;
+    font-weight: 400;
+    font-size: 36px;
+    font-family: Jost;
+    padding: 0 0 40px;
+    margin: 0;
+    text-transform: uppercase;
+}
+.about-company__description p {
+    padding: 0 0 30px;
+    margin: 0;
+}
+
+.hr{
+    max-width: 1640px;
+}
+
+.about-company__description p span {
+    font-size: 24px;
+    color: #000;
+    line-height: 1.5;
+    display: block;
+    margin-bottom: 5px;
+}
+.about-company__description p strong {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #000;
+    letter-spacing: .5px;
+}
+.about-company .row>div {
+    padding: 0 45px;
+}
+.about-company__image {
+    margin: 0 0 70px;
+}
+.about-company__image img {
+    display: block;
+    width: 100%;
+}
+.about-company__title {
+    color: #000;
+    font-weight: 400;
+    font-size: 36px;
+    font-family: Jost;
+    padding: 0 0 40px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.about-section {
+    padding: 0 0 120px;
+}
+hr {
+    background: #e6e6e6;
+    height: 1px;
+    border: none;
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+}
+hr:not([size]) {
+    height: 1px;
+}
+hr {
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    overflow: hidden;
+    border-style: inset;
+    border-width: 1px;
+}
+
+hr+.about-section__title {
+    padding-top: 120px;
+}
+.about-section__title {
+    padding: 135px 0 0;
+    margin: 0;
+    font-size: 36px;
+    font-family: Jost;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #000000;
+}
+.about-section .home-brands__items {
+    border: none;
+    padding: 55px 0 0;
+    margin: 0;
+}
+.home-brands__items {
+    padding: 85px 0 75px;
+    display: flex;
+    align-items: center;
+}
+.home-brand-item:first-of-type {
+    margin-left: 0;
+    padding-left: 0;
+}
+.home-brand-item {
+    margin: 0 auto;
+    padding: 0 30px;
+}
+.home-brand-item a {
+    display: block;
+    opacity: .4;
+    transition: all .3s ease-in;
+    -webkit-transition: all .3s ease-in;
+    -moz-transition: all .3s ease-in;
+}
+.home-brand-item a img {
+    display: inline-block;
+    max-width: 100%;
+}
+img, svg {
+    vertical-align: middle;
+}
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}

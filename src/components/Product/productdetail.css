@@ -1,0 +1,128 @@
+.whole {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 100px;
+  color: #1A1A1A;
+}
+.left img {
+  height: 500px;
+  width: 400px;
+  padding-top: 100px;
+  padding-left: 50px;
+}
+
+.right {
+  margin-top: 1%;
+}
+
+.filtercontainer {
+  width: 50%;
+  margin: 30px 0px;
+  display: block;
+  justify-content: space-between;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+}
+
+.filtercolor {
+  display: block;
+  align-items: center;
+  color: #1A1A1A;
+}
+
+.filtercolor .color-wrapper {
+  display: flex;
+  border: 2px solid lightgoldenrodyellow;
+  padding: 0px;
+  margin-right: 10px;
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #1A1A1A;
+}
+
+.filtercolor .color-wrapper.selected {
+  border: 2px solid teal;
+}
+
+
+
+.filtercolor .color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.filtercolor p {
+  font-size: 20px;
+  font-weight: 200;
+  padding-right: 10px;
+  margin: 0px;
+  width: 200%;
+}
+
+.filtersize {
+  display: block;
+  align-items: center;
+  margin-left: 0px;
+}
+
+.filtersize p {
+  margin-top: -2px;
+  margin-bottom: 0px;
+  padding-right: 10px;
+}
+
+#size {
+  padding-bottom: -1px;
+}
+
+.addcontainer {
+  padding: 15px;
+  border: 2px solid teal;
+  background-color: white;
+  cursor: pointer;
+  font-weight: 500;
+
+  &:hover {
+    border: 2px solid gray;
+    background-color: darkblue;
+    color: white;
+  }
+}
+
+.customcolor {
+  padding-right: 30%;
+  cursor: pointer;
+}
+
+.filtersize .size-wrapper {
+  display: flex;
+  border: 2px solid lightgoldenrodyellow;
+  border-radius: 4px; /* Optionally add some border-radius for rounded corners */
+  padding: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  width: 30px; /* Adjust the width to create a square shape */
+  height: 30px; /* Adjust the height to create a square shape */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.filtersize .size-wrapper.selected {
+  border: 2px solid teal;
+}
+
+.description #price {
+  color: #1A1A1A;
+  font-size: 20px;
+  font-weight: 200;
+}

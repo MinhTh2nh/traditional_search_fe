@@ -1,0 +1,300 @@
+.header{
+  max-width: 1640px;
+  margin: 0 auto; /* Center the header horizontally */
+  padding: 0 70px;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff; /* Add a background color if needed */
+  z-index: 999; /* Ensure it's on top of other content */
+  /* Additional styles for the header */
+  box-sizing: border-box;
+}
+
+
+
+
+.header-container {
+  background: white;
+  display: flex;
+  top: 0;
+  left: 0;  
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  border-bottom: 0.1px solid #cccccc;
+}
+  
+
+.icon {
+  display: flex;
+  justify-content: left;
+  width: auto;
+}
+
+.icon h1 {
+  width: 150px;
+  height: 50px;
+  padding-left: 150px;
+  padding-right: -50px;
+  padding-top: 25px;
+  font: 30px Marcellus;
+  
+  color:black;  
+
+}
+
+.icon img {
+  margin-left: 100px;
+  height: 80px;
+  width: 70px;
+}
+
+.contact {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  font-family: "Jost", sans-serif;
+}
+.content-contact {
+  padding-top: 3px;
+}
+.contact img {
+  height: 30px;
+  width: 30px;
+  padding-top: 10px;
+}
+.content-contact span {
+  color: rgb(190, 190, 190);
+  font: 12px Jost;
+}
+
+.content-contact p {
+  height: 20px;
+  margin-top: 5px;
+  color: rgb(0,0,0);
+  font: 12px Jost;
+}
+
+.home-link {
+  color: black;
+  font: 16px Jost;
+  text-decoration: none;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 100px;
+}
+
+.header-right * {
+  margin:5px;
+  font: 20px;
+  display: inline-block;
+  color: rgb(45, 44, 44);
+}
+
+.below-header-container {
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+  width: auto;
+  font-family: "Jost", sans-serif;
+}
+
+.language select {
+  border: 0px solid #cccccc;
+  margin-top: 15px;
+  margin-right: 120px;
+  font-size: 18px;
+  font: 16px Jost;
+  border: 0px;
+  outline: 0px;
+}
+.language option {
+  font-size: 15px;
+  font-family: "Jost", sans-serif;
+}
+
+.language select {
+  font-family: 18px Jost;
+  text-transform: uppercase;
+}
+
+
+.menu-bar {
+  background: white;
+  text-align: center;
+  font-family: "Jost", sans-serif;
+  align-items: center;
+  justify-content: center;
+  margin:0 -10px;
+}
+
+.menu-bar ul {
+  display: inline-flex;
+  list-style: none;
+  color: black;
+}
+
+
+.menu-brand-item {
+  opacity: .4;
+  transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
+  -moz-transition: all .3s ease-in;
+  margin-right: 35px;
+  margin-bottom: 34px;
+}
+
+.meo{
+  width: 285px;
+  padding-right: 25px;
+}
+.custom-style-header {
+  color: #aba3a3;
+  font: 16px Jost;
+  text-transform: uppercase;
+
+}
+
+.menu-bar ul li {
+  width: auto;
+  margin: 0px;
+  padding: 15px;
+  font: 16px Jost;
+}
+
+.sub-menu-1 {
+  display: none;
+  border: 1px solid #cccccc;
+  text-align: mid;
+  padding-left: 10px;
+  padding-right:10px;
+  padding-top:20px;
+  font-family: "Jost", sans-serif;
+}
+
+
+.menu-bar ul li:hover .sub-menu-1 {
+  display: flex;
+  position: absolute;   
+  margin-top: 65px;
+  margin-left: -50px;
+  font-family: "Jost", sans-serif;
+  background-color: white;
+}
+
+.menu-bar ul li:hover .sub-menu-1 ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-direction: column; 
+  padding: 10px;
+  margin: 10px;
+}
+
+.menu-bar ul li:hover .sub-menu-1 ul li{
+  text-align: left;
+  
+}
+
+.custom-style {
+  color: rgb(14, 12, 12); 
+  font-weight: bold; 
+  font: 12px Jost;
+}
+
+.below {
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+  width: auto;
+  margin-left: 33px;
+}
+
+/* Add this to your Header.css file or create a new CSS file */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 4px; /* Optional: Add rounded corners */
+}
+
+.dropdown-menu{
+  position: absolute;
+  top: 100px;
+  right: 20px;
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  padding: 10px 20px;
+  width: 200px;
+}
+
+.dropdown-menu::before{
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: 20px;
+  height: 20px;
+  width: 20px;
+  background: var(--secondary-bg);
+  transform: rotate(45deg);
+}
+
+.dropdown-menu.active{
+  margin-left: 85%;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: var(--speed) ease;
+}
+
+.dropdown-menu.inactive{
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: var(--speed) ease;
+}
+
+.dropdown-menu ul li{
+  padding: 10px  0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-menu ul li:hover a{
+  color: rgb(212, 33, 9);
+  cursor: pointer;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dropdown-menu li img {
+  width: 24px; /* Adjust the width as needed */
+  height: 24px; /* Adjust the height as needed */
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+
+/* Other styles for your dropdown menu... */
+
+
+

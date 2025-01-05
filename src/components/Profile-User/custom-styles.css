@@ -1,0 +1,9 @@
+/* Override my-5 class with my-7 */
+.my-5 {
+  margin-top: 5rem; /* Set margin-top to the desired value */
+  margin-bottom: 5rem; /* Set margin-bottom to the desired value */
+}
+.my-7 {
+  margin-top: 10rem; /* Set margin-top to the desired value */
+  margin-bottom: 7rem; /* Set margin-bottom to the desired value */
+}

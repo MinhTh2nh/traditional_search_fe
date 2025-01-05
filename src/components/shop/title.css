@@ -1,0 +1,14 @@
+.title-content {
+  padding-top: 100px;
+  font-family: "Jost", sans-serif;
+  padding-left: 100px;
+  padding-bottom: 100px;
+}
+.title-content a {
+  text-decoration: none;
+  color: gray;
+}
+
+.title-content p {
+  font-weight: 700;
+}
