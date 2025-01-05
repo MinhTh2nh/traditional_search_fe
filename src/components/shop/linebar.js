@@ -13,6 +13,7 @@ function Linebar({ onCategoryChange, onSortChange }) {
   const [uniqueProductTypes, setUniqueProductTypes] = useState(new Set());
   const [minPrice, setMinPrice] = useState(null);
   const [maxPrice, setMaxPrice] = useState(null);
+  const backendUrl = process.env.REACT_APP_BACKEND_URL; 
 
   const handleSortChange = (value) => {
     let sortedProducts = [...api];
@@ -91,7 +92,7 @@ function Linebar({ onCategoryChange, onSortChange }) {
     const fetchData = async () => {
       try {
         const token = getToken();
-        const response = await fetch("http://localhost:3001/api/product", {
+        const response = await fetch(`${backendUrl}/api/product`, {
           method: "GET",
         });
 

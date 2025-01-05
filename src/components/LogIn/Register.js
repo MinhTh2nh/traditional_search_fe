@@ -11,12 +11,13 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const backendUrl = process.env.REACT_APP_BACKEND_URL; 
 
   async function handleSignUp(event) {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3001/api/register", {
+      const response = await fetch(`${backendUrl}/api/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
