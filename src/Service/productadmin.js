@@ -27,8 +27,6 @@ export const addNewProduct = async (
   color,
   material,
   picture_one,
-  picture_two,
-  picture_three
 ) => {
   try {
     return await axios.post(
@@ -37,13 +35,11 @@ export const addNewProduct = async (
         product_name: product_name,
         product_type: product_type,
         price: price,
-        quantity: quantity,
+        total_stock: quantity,
         size: size,
         color: color,
-        material: material,
-        picture_one: picture_one,
-        picture_two: picture_two,
-        picture_three: picture_three,
+        description: material,
+        image_url: picture_one,
       },
       { headers: getHeaders() }
     );
@@ -55,6 +51,8 @@ export const addNewProduct = async (
 
 export const updateProductID = async (id, updateData) => {
   try {
+    console.log("Updating product with ID:", id);
+    console.log("Update data:", updateData);
     return await axios.put(
       `${backendUrl}/api/admin-product/${id}/update`,
       updateData,

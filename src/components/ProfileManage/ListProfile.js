@@ -16,7 +16,6 @@ const UserProfileList = () => {
   const [editableFields, setEditableFields] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   useEffect(() => {
-    
     fetchData(); // Call the fetchData function to execute the API call
   }, []); // The empty dependency array means this effect runs only once (on mount)
   const fetchData = async () => {
@@ -33,7 +32,7 @@ const UserProfileList = () => {
   const handleDelete = async (id) => {
     try {
       await DeleteProfileByID(id);
-      const updatedUserList = userData.filter((user) => user.id !== id);
+      const updatedUserList = userData.filter((user) => user._id !== id);
       setUserData(updatedUserList); // Update the state with the new user list (excluding the deleted user)
       toast.success("Profile deleted successfully"); // Display success toast
       fetchData();
@@ -45,7 +44,7 @@ const UserProfileList = () => {
 
   const handleEdit = (id) => {
     setIsEditing(true);
-    const userToEdit = userData.find((user) => user.id === id);
+    const userToEdit = userData.find((user) => user._id === id);
     setEditableFields({ ...editableFields, [id]: { ...userToEdit } });
   };
 
@@ -53,22 +52,15 @@ const UserProfileList = () => {
     event.preventDefault(); // Prevent default form submission behavior
 
     try {
-      // Handle save functionality for the specific user (e.g., update user data in the backend)
       const updatedUserData = userData.map((user) => {
-        if (user.id === id) {
+        if (user._id === id) {
           return { ...user, ...editableFields[id] };
         }
         return user;
       });
-
-      // Update the user data state
       setUserData(updatedUserData);
       console.log(updatedUserData);
       await UpdateProfileByID(id, editableFields[id]);
-
-      // Perform API call to update user data here if needed
-      // Example: await updateProfileById(id, editableFields[id]);
-
       setIsEditing(false);
       toast.success("Profile updated successfully");
     } catch (error) {
@@ -88,65 +80,45 @@ const UserProfileList = () => {
           <h2>User Profiles</h2>
           <ul className="user-list">
             {userData.map((user) => (
-              <li key={user.id}>
-                <form onSubmit={(event) => handleSave(event, user.id)}>
+              <li key={user._id}>
+                <form onSubmit={(event) => handleSave(event, user._id)}>
                   <div>
                     <strong>ID: </strong>
-                    <span onClick={() => handleEdit(user.id)}>
-                      {`${user.id}`}
+                    <span onClick={() => handleEdit(user._id)}>
+                      {`${user._id}`}
                     </span>
                   </div>
                   <div>
-                    <strong> First Name: </strong>
-                    {isEditing && editableFields[user.id] ? (
+                    <strong> Name: </strong>
+                    {isEditing && editableFields[user._id] ? (
                       <input
                         type="text"
-                        value={editableFields[user.id].firstname || ""}
+                        value={editableFields[user._id].firstname || user.name}
                         onChange={(e) =>
                           setEditableFields({
                             ...editableFields,
-                            [user.id]: {
-                              ...editableFields[user.id],
+                            [user._id]: {
+                              ...editableFields[user._id],
                               firstname: e.target.value,
                             },
                           })
                         }
                       />
                     ) : (
-                      `${user.firstname}`
-                    )}
-                  </div>
-                  <div>
-                    <strong> Last Name: </strong>
-                    {isEditing && editableFields[user.id] ? (
-                      <input
-                        type="text"
-                        value={editableFields[user.id].lastname || ""}
-                        onChange={(e) =>
-                          setEditableFields({
-                            ...editableFields,
-                            [user.id]: {
-                              ...editableFields[user.id],
-                              lastname: e.target.value,
-                            },
-                          })
-                        }
-                      />
-                    ) : (
-                      `${user.lastname}`
+                      `${user.name}`
                     )}
                   </div>
                   <div>
                     <strong> Email: </strong>
-                    {isEditing && editableFields[user.id] ? (
+                    {isEditing && editableFields[user._id] ? (
                       <input
                         type="text"
-                        value={editableFields[user.id].email || ""}
+                        value={editableFields[user._id].email || ""}
                         onChange={(e) =>
                           setEditableFields({
                             ...editableFields,
-                            [user.id]: {
-                              ...editableFields[user.id],
+                            [user._id]: {
+                              ...editableFields[user._id],
                               email: e.target.value,
                             },
                           })
@@ -158,15 +130,15 @@ const UserProfileList = () => {
                   </div>
                   <div>
                     <strong> Phone: </strong>
-                    {isEditing && editableFields[user.id] ? (
+                    {isEditing && editableFields[user._id] ? (
                       <input
                         type="text"
-                        value={editableFields[user.id].phone || ""}
+                        value={editableFields[user._id].phone || ""}
                         onChange={(e) =>
                           setEditableFields({
                             ...editableFields,
-                            [user.id]: {
-                              ...editableFields[user.id],
+                            [user._id]: {
+                              ...editableFields[user._id],
                               phone: e.target.value,
                             },
                           })
@@ -178,15 +150,15 @@ const UserProfileList = () => {
                   </div>
                   <div>
                     <strong> Address: </strong>
-                    {isEditing && editableFields[user.id] ? (
+                    {isEditing && editableFields[user._id] ? (
                       <input
                         type="text"
-                        value={editableFields[user.id].address || ""}
+                        value={editableFields[user._id].address || ""}
                         onChange={(e) =>
                           setEditableFields({
                             ...editableFields,
-                            [user.id]: {
-                              ...editableFields[user.id],
+                            [user._id]: {
+                              ...editableFields[user._id],
                               address: e.target.value,
                             },
                           })
@@ -202,13 +174,13 @@ const UserProfileList = () => {
                         <button
                           type="button"
                           className="action-button delete"
-                          onClick={() => handleDelete(user.id)}
+                          onClick={() => handleDelete(user._id)}
                         >
                           <FontAwesomeIcon icon={faTrash} />
                         </button>
                         <button
                           className="action-button update"
-                          onClick={() => handleEdit(user.id)}
+                          onClick={() => handleEdit(user._id)}
                         >
                           <FontAwesomeIcon icon={faEdit} />
                         </button>

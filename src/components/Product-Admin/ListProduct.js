@@ -168,19 +168,19 @@ const ProductList = () => {
                     {isEditing && editableFields[product.id] ? (
                       <input
                         type="text"
-                        value={editableFields[product.id].quantity || ""}
+                        value={editableFields[product.id].total_stock || ""}
                         onChange={(e) =>
                           setEditableFields({
                             ...editableFields,
                             [product.id]: {
                               ...editableFields[product.id],
-                              quantity: e.target.value,
+                              total_stock: e.target.value,
                             },
                           })
                         }
                       />
                     ) : (
-                      `${product.quantity}`
+                      `${product.total_stock}`
                     )}
                   </div>
                   {/*Color */}

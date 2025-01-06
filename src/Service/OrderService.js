@@ -30,6 +30,8 @@ const getToken = () => {
 
   export const UpdateOrderByID = async (orderID, updatedData) => {
     try {
+      console.log('Updating order with ID:', orderID);
+      console.log('Update data:', updatedData);
       return await axios.put(
         `${backendUrl}/api/order/${orderID}`,
         updatedData,

@@ -11,12 +11,13 @@
   /* Style for cards */
   .card-container44 {
     display: flex;
-    justify-content: space-between;
-    width: 80%;
+    justify-content:space-around;
+    width: 60%;
+    margin-left: 10%;
   }
   
   .card44 {
-    width: calc(30% - 20px); /* Adjust card width */
+    width: calc(50% - 20px); /* Adjust card width */
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 20px;

@@ -4,19 +4,19 @@ import './Order.css'; // Import the CSS file
 import Sidebar from '../Dashboard/sidebar';
 import Header from '../Dashboard/Header-Admin';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash,faSearch, faCheck, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faSearch, faCheck, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { ToastContainer, toast } from 'react-toastify';
 import { ListAllOrders, UpdateOrderByID, DeleteOrderByID } from '../../Service/OrderService';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useParams, useNavigate } from 'react-router-dom';
 
 const OrderList = () => {
   const [orderData, setOrderData] = useState([]);
   const [editableFields, setEditableFields] = useState({});
   const [isEditing, setIsEditing] = useState(false);
-  const[orderIDSearch,setOrderIDSearch] = useState('');
+  const [orderIDSearch, setOrderIDSearch] = useState('');
   useEffect(() => {
-    
+
     fetchData(); // Call the fetchData function to execute the API call
 
   }, []); // The empty dependency array means this effect runs only once (on mount)
@@ -24,8 +24,8 @@ const OrderList = () => {
   const navigate = useNavigate();
   const fetchData = async () => {
     try {
-      const response = await ListAllOrders(); 
-      setOrderData(response.data); 
+      const response = await ListAllOrders();
+      setOrderData(response.data);
       console.log(response.data); // Assuming the data is in the 'data' property of the response
     } catch (error) {
       // Handle errors if the request fails
@@ -55,7 +55,7 @@ const OrderList = () => {
 
   const handleSave = async (event, orderID) => {
     event.preventDefault(); // Prevent default form submission behavior
-  
+
     try {
       // Handle save functionality for the specific order (e.g., update order data in the backend)
       const updatedOrderData = orderData.map(order => {
@@ -64,15 +64,15 @@ const OrderList = () => {
         }
         return order;
       });
-  
+
       // Update the order data state
       setOrderData(updatedOrderData);
-      console.log(updatedOrderData);
+      console.log('Updating order before passing:', updatedOrderData);
       await UpdateOrderByID(orderID, editableFields[orderID]);
-      
+
       // Perform API call to update order data here if needed
       // Example: await updateProfileById(id, editableFields[id]);
-  
+
       setIsEditing(false);
       toast.success('Order updated successfully');
     } catch (error) {
@@ -80,12 +80,27 @@ const OrderList = () => {
       toast.error('Error updating order');
     }
   };
+  const getStatusColor = (status) => {
+    switch (status) {
+      case 'Pending':
+        return 'yellow';
+      case 'Confirmed':
+        return 'blue';
+      case 'Success':
+        return 'green';
+      case 'Cancel':
+        return 'red';
+      default:
+        return 'gray'; // Default color if status is unknown
+    }
+  };
+
   return (
     <div>
-        <Header />
-        <ToastContainer />
-    <div className="container-profile">
-    <div className="search">
+      <Header />
+      <ToastContainer />
+      <div className="container-profile">
+        <div className="search">
           <div className="search-bar">
             <input
               type="text"
@@ -100,168 +115,218 @@ const OrderList = () => {
             </Link>
           </div>
         </div>
-      <div className="order-profile">
-        <hr />
+        <div className="order-profile">
+          <hr />
 
-        <h2>Order List</h2>
-        
-        <ul className="order-list">
-        {orderData.map((order) => (
-          <li key={order.orderID}>
-          <form onSubmit={(event) => handleSave(event, order.orderID)}>
-              <div>
-                <strong> Order ID: </strong>
-                <span onClick={() => handleEdit(order.orderID)}>
-                  {`${order.orderID}`}
-                </span>
-              </div>   
-              <div>
-                <strong> Customer ID: </strong>
-                <span onClick={() => handleEdit(order.customerid)}>
-                  {`${order.customerid}`}
-                </span>
-              </div>   
-              <div>
-                <strong> First Name: </strong>
-                {isEditing && editableFields[order.orderID] ? (
-                  <input
-                    type="text"
-                    value={editableFields[order.orderID].firstname || ''}
-                    onChange={(e) =>
-                      setEditableFields({
-                        ...editableFields,
-                        [order.orderID]: {
-                          ...editableFields[order.orderID],
-                          firstname: e.target.value,
-                        },
-                      })
-                    }
-                  />
-                ) : (
-                  `${order.firstname}`
-                )}
-              </div>
-              <div>
-                <strong> Last Name: </strong>
-                {isEditing && editableFields[order.orderID] ? (
-                  <input
-                    type="text"
-                    value={editableFields[order.orderID].lastname || ''}
-                    onChange={(e) =>
-                      setEditableFields({
-                        ...editableFields,
-                        [order.orderID]: {
-                          ...editableFields[order.orderID],
-                          lastname: e.target.value,
-                        },
-                      })
-                    }
-                  />
-                ) : (
-                  `${order.lastname}`
-                )}
-              </div>
-              <div>
-                <strong> Email: </strong>
-                {isEditing && editableFields[order.orderID] ? (
-                  <input
-                    type="text"
-                    value={editableFields[order.orderID].email || ''}
-                    onChange={(e) =>
-                      setEditableFields({
-                        ...editableFields,
-                        [order.orderID]: {
-                          ...editableFields[order.orderID],
-                          email: e.target.value,
-                        },
-                      })
-                    }
-                  />
-                ) : (
-                  `${order.email}`
-                )}
-              </div>
-              <div>
-                <strong> Phone: </strong>
-                {isEditing && editableFields[order.orderID] ? (
-                  <input
-                    type="text"
-                    value={editableFields[order.orderID].phone|| ''}
-                    onChange={(e) =>
-                      setEditableFields({
-                        ...editableFields,
-                        [order.orderID]: {
-                          ...editableFields[order.orderID],
-                          phone: e.target.value,
-                        },
-                      })
-                    }
-                  />
-                ) : (
-                  `${order.phone}`
-                )}
-              </div>
-              <div>
-                <strong> Address: </strong>
-                {isEditing && editableFields[order.orderID] ? (
-                  <input
-                    type="text"
-                    value={editableFields[order.orderID].address|| ''}
-                    onChange={(e) =>
-                      setEditableFields({
-                        ...editableFields,
-                        [order.orderID]: {
-                          ...editableFields[order.orderID],
-                          address: e.target.value,
-                        },
-                      })
-                    }
-                  />
-                ) : (
-                  `${order.address}`
-                )}
-              </div>
+          <h2>Order List</h2>
+
+          <ul className="order-list">
+            {orderData.map((order) => (
+              <li key={order._id}>
+                <form onSubmit={(event) => handleSave(event, order._id)}>
+                  <div>
+                    <strong> Order ID: </strong>
+                    <span onClick={() => handleEdit(order._id)}>
+                      {`${order._id}`}
+                    </span>
+                  </div>
+                  <div>
+                    <strong> Customer ID: </strong>
+                    <span onClick={() => handleEdit(order.userId)}>
+                      {`${order.userId}`}
+                    </span>
+                  </div>
+                  <div>
+                    <strong>Full Name</strong>
+                    {isEditing && editableFields[order._id] ? (
+                      <input
+                        type="text"
+                        value={editableFields[order._id].fullName || order.fullName || ''}
+                        onChange={(e) => {
+                          const newFullName = e.target.value;
+                          if (newFullName !== editableFields[order._id]?.fullName) {
+                            setEditableFields({
+                              ...editableFields,
+                              [order._id]: {
+                                ...editableFields[order._id],
+                                fullName: newFullName,
+                              },
+                            });
+                          }
+                        }}
+                      />
+                    ) : (
+                      <span>{order.fullName}</span>
+                    )}
+                  </div>
+
+                  <div>
+                    <strong> Phone: </strong>
+                    {isEditing && editableFields[order._id] ? (
+                      <input
+                        type="text"
+                        value={editableFields[order._id].phoneNumber || order.phoneNumber || ''}
+                        onChange={(e) =>
+                          setEditableFields({
+                            ...editableFields,
+                            [order._id]: {
+                              ...editableFields[order._id],
+                              phoneNumber: e.target.value,
+                            },
+                          })
+                        }
+                      />
+                    ) : (
+                      `${order.phoneNumber}`
+                    )}
+                  </div>
+                  <div>
+                    <strong> Address: </strong>
+                    {isEditing && editableFields[order._id] ? (
+                      <input
+                        type="text"
+                        value={editableFields[order._id].shipping_address || order.shipping_address || ''}
+                        onChange={(e) =>
+                          setEditableFields({
+                            ...editableFields,
+                            [order._id]: {
+                              ...editableFields[order._id],
+                              shipping_address: e.target.value,
+                            },
+                          })
+                        }
+                      />
+                    ) : (
+                      `${order.shipping_address}`
+                    )}
+                  </div>
+                  <div>
+                    <strong> Total Amount: </strong>
+                    {isEditing && editableFields[order._id] ? (
+                      <input
+                        type="text"
+                        disabled
+                        value={editableFields[order._id].totalAmount || order.totalAmount || ''}
+                        onChange={(e) =>
+                          setEditableFields({
+                            ...editableFields,
+                            [order._id]: {
+                              ...editableFields[order._id],
+                              totalAmount: e.target.value,
+                            },
+                          })
+                        }
+                      />
+                    ) : (
+                      `${order.totalAmount}$`
+                    )}
+                  </div>
+                  <div>
+                    <strong> Payment Method: </strong>
+                    {isEditing && editableFields[order._id] ? (
+                      <input
+                        type="text"
+                        value={editableFields[order._id].paymentMethod || order.paymentMethod || ''}
+                        onChange={(e) =>
+                          setEditableFields({
+                            ...editableFields,
+                            [order._id]: {
+                              ...editableFields[order._id],
+                              paymentMethod: e.target.value,
+                            },
+                          })
+                        }
+                      />
+                    ) : (
+                      `${order.paymentMethod}`
+                    )}
+                  </div>
+                  <div>
+                    <strong>Status</strong>
+                    {isEditing && editableFields[order._id] ? (
+                      <select
+                        value={editableFields[order._id]?.status || order.status ||'Pending'}
+                        onChange={(e) =>
+                          setEditableFields({
+                            ...editableFields,
+                            [order._id]: {
+                              ...editableFields[order._id],
+                              status: e.target.value,
+                            },
+                          })
+                        }
+                        style={{
+                          backgroundColor: getStatusColor(editableFields[order._id]?.status),
+                          color: '#1A1A1A',
+                          padding: '5px 10px',
+                          border: '1px solid #1A1A1A',
+                          borderRadius: '4px',
+                          cursor: 'pointer',
+                          fontWeight: 'bold',
+                        }}
+                      >
+                        <option value="Pending">Pending</option>
+                        <option value="Confirmed">Confirmed</option>
+                        <option value="Success">Success</option>
+                        <option value="Cancel">Cancel</option>
+                      </select>
+                    ) : (
+                      <span
+                        style={{
+                          backgroundColor: getStatusColor(order.status),
+                          color: '#1A1A1A',
+                          fontWeight: 'bold',
+                          padding: '5px 10px',
+                          borderRadius: '4px',
+                          borderWidth: '1px solid #1A1A1A',
+                        }}
+                      >
+                        {order.status}
+                      </span>
+                    )}
+                  </div>
+
                   <div className="action-buttons">
-                {!isEditing ? (
-                  <>
-                 <Link to =  {`/orderdetail-manage/${order.orderID}`}>
-                  <button
-          type = "button"
-          className="action-button detail"
+                    {!isEditing ? (
+                      <>
+                        <Link to={`/orderdetail-manage/${order._id}`}>
+                          <button
+                            type="button"
+                            className="action-button detail"
 
-        >
-          Show Detail
-        </button></Link>
-                    <button
-                     type = "button"
-                      className="action-button delete"
-                      onClick={() => handleDelete(order.orderID)}
-                    >
-                      <FontAwesomeIcon icon={faTrash} />
-                    </button>
-                    <button
-                      className="action-button update"
-                      onClick={() => handleEdit(order.orderID)}
-                    >
-                      <FontAwesomeIcon icon={faEdit} />
-                    </button>
-                  </>
-                ) : (
-                  <button
-                    className="action-button confirm"
-                    type="submit"
-                  >
-                    <FontAwesomeIcon icon={faCheck} />
-                  </button>
-                )}
-              </div>
-              </form>
-            </li>
-          ))}
-        </ul>
+                          >
+                            Show Detail
+                          </button></Link>
+                        <button
+                          type="button"
+                          className="action-button delete"
+                          onClick={() => handleDelete(order._id)}
+                        >
+                          <FontAwesomeIcon icon={faTrash} />
+                        </button>
+                        <button
+                          className="action-button update"
+                          onClick={() => handleEdit(order._id)}
+                        >
+                          <FontAwesomeIcon icon={faEdit} />
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        className="action-button confirm"
+                        type="submit"
+                      >
+                        <FontAwesomeIcon icon={faCheck} />
+                      </button>
+                    )}
+                  </div>
+                </form>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <Sidebar />
       </div>
-      <Sidebar />
-    </div>
     </div>
   );
 };

@@ -38,36 +38,32 @@ export const ViewProfileByID = async (id) => {
   });
 };
 
-export const AddNewUser = async (
-  id,
-  firstname,
-  lastname,
-  phone,
-  address,
-  email,
-  password
-) => {
+export const AddNewUser = async (firstname, lastname, phone, address, email) => {
   try {
+    // Send the user details to the backend
     return await axios.post(
       `${backendUrl}/api/profile-admin/`,
       {
-        id: id,
-        firstname: firstname,
-        lastname: lastname,
-        phone: phone,
-        address: address,
-        email: email,
-        password: "1", // Send the hashed password to the backend
+        firstname,
+        lastname,
+        phone,
+        address,
+        email,
+        password: "12345678", // Default password
       },
-      { headers: getAuthHeaders() }
+      { headers: getAuthHeaders() } // Include authorization headers
     );
   } catch (error) {
-    throw new Error("Error adding new user");
+    console.error('Error adding new user:', error);
+
+    // Throw a meaningful error for better debugging
+    throw new Error('Error adding new user: ' + error.message);
   }
 };
 
 export const UpdateProfileByID = async (id, updatedData) => {
   try {
+    console.log("update profile by id", updatedData);
     return await axios.put(
       `${backendUrl}/api/profile-admin/${id}`,
       updatedData,
