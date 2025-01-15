@@ -1,11 +1,11 @@
-// ProductManage.js
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ListAllProduct, addNewProduct } from "../../Service/productadmin";
+import { ListAllProduct, addNewProduct, exportAllProducts as exportProductsService } from "../../Service/productadmin";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Sidebar from "../Dashboard/sidebar";
 import Header from "../Dashboard/Header-Admin";
+import "./ProductManage.css";
 
 const ProductManage = () => {
   const [products, setProducts] = useState([]);
@@ -17,8 +17,8 @@ const ProductManage = () => {
   const [size, setSize] = useState("");
   const [material, setMaterial] = useState("");
   const [picone, setPicone] = useState("");
-  const [product_search, setProductSearch] = useState(""); // Added state for ID search
-  const [loading, setLoading] = useState(false); // Added state for loading
+  const [productSearch, setProductSearch] = useState(""); // Renamed for clarity
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -53,8 +53,14 @@ const ProductManage = () => {
       alert("Please fill in all fields");
       return;
     }
+
+    if (isNaN(price) || isNaN(quantity)) {
+      alert("Price and Quantity must be numeric values.");
+      return;
+    }
+
     try {
-      setLoading(true); // Set loading to true when function starts
+      setLoading(true);
       await addNewProduct(
         productName,
         productType,
@@ -75,10 +81,32 @@ const ProductManage = () => {
         position: toast.POSITION.TOP_CENTER,
       });
     } finally {
-      setLoading(false); // Set loading to false when function completes
+      setLoading(false);
     }
   };
 
+  const exportAllProducts = async () => {
+    try {
+      setLoading(true);
+      const response = await exportProductsService(); // Use the service function
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "products.csv");
+      document.body.appendChild(link);
+      link.click();
+      toast.success("Products exported successfully!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } catch (error) {
+      console.error("Error exporting products:", error);
+      toast.error("Failed to export products!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div>
@@ -90,12 +118,12 @@ const ProductManage = () => {
             <div className="input-group44">
               <input
                 type="text"
-                placeholder="Enter Product Id"
-                value={product_search}
+                placeholder="Enter Product ID"
+                value={productSearch}
                 onChange={(e) => setProductSearch(e.target.value)}
               />
-              <Link to={product_search ? `/product-view/${product_search}` : "#"}>
-                <button disabled={!product_search}>View Product</button>
+              <Link to={productSearch ? `/product-view/${productSearch}` : "#"}>
+                <button disabled={!productSearch}>View Product</button>
               </Link>
             </div>
           </div>
@@ -115,7 +143,7 @@ const ProductManage = () => {
                 onChange={(e) => setProductType(e.target.value)}
               />
               <input
-                type="text"
+                type="number"
                 placeholder="Price"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
@@ -146,7 +174,7 @@ const ProductManage = () => {
               />
               <input
                 type="text"
-                placeholder="Product Image"
+                placeholder="Product Image URL"
                 value={picone}
                 onChange={(e) => setPicone(e.target.value)}
               />
@@ -156,12 +184,22 @@ const ProductManage = () => {
             </div>
           </div>
 
-          <div className="card44">
-            <h3>List Product</h3>
-            <div className="input-group44">
-              <Link to="/product-list">
-                <button>List All Product</button>
-              </Link>
+          <div className="card44-container">
+            <div className="card-full">
+              <h3>List Product</h3>
+              <div className="input-group44">
+                <Link to="/product-list">
+                  <button>List All Products</button>
+                </Link>
+              </div>
+            </div>
+            <div className="card-full">
+              <h3>Export Products</h3>
+              <div className="input-group44">
+                <button onClick={exportAllProducts} disabled={loading}>
+                  {loading ? "Exporting..." : "Export All Products"}
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -12,6 +12,12 @@ export const ListAllProduct = async () => {
   });
 };
 
+export const exportAllProducts = async () => {
+  return await axios.post(`${backendUrl}/api/admin-product/export`, {
+    headers: getHeaders(),
+  });
+};
+
 export const ViewProductbyID = async (id) => {
   return await axios.get(`${backendUrl}/api/admin-product/${id}`, {
     headers: getHeaders(),

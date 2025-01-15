@@ -12,6 +12,7 @@
   .card-container44 {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
     width: 80%;
   }
   
@@ -22,6 +23,33 @@
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+  }
+
+  .card44-container {
+    width: calc(30% - 20px); /* Adjust card width */
+    gap: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+
+  .card-full {
+    width: calc(100% - 20px); /* Adjust card width */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .card-full h3 {
+    font: 20px Jost;
   }
   
   .card44 h3 {
